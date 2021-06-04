@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Attenderizer.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout BackgroundColor="Black">
+        <Frame BackgroundColor="#004760" Padding="24" CornerRadius="0">
+            <!--#004760 or #00A5A7-->
+            <Label Text="Login" HorizontalTextAlignment="Center" TextColor="White" FontSize="Title"/>
+        </Frame>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label TextColor="White" Text="Username" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"></Label>
+            
+            <Entry Text="{Binding Username}" Grid.Row="1" Grid.Column="1" Margin="10,10,30,10" VerticalOptions="Center" BackgroundColor="White"/>
+            
+            <Label TextColor="White" Text="Password:" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" Margin="10" VerticalOptions="Center"></Label>
+
+            <Entry Text="{Binding Password}" Grid.Row="2" Grid.Column="1" Margin="10,10,30,10" VerticalOptions="Center" BackgroundColor="White" IsPassword="True"/>
+
+            <Button Command="{Binding LoginCommand}" FontSize="Small" TextColor="White" Text="Login" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" BackgroundColor="#00A5A7" Margin="10,10,30,10"></Button>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

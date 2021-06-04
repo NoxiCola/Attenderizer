@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Attenderizer.Views.Tabs.ScannerPage"
+             
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="False"
+
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms">
+
+    <NavigationPage.TitleView>
+        <Label Text="Settings"
+               FontSize="20"
+               TextColor="#FFFFFF"
+               HorizontalTextAlignment="Start"
+               HorizontalOptions="Start"/>
+    </NavigationPage.TitleView>
+
+    
+    
+<ContentPage.Content>
+        <StackLayout BackgroundColor="#000000" VerticalOptions="FillAndExpand">
+
+
+            <Grid VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="90"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--IGNORE FOR MVVM-->
+                <zxing:ZXingScannerView Grid.Row="0" 
+                                        x:Name="_scanView" 
+                                        OnScanResult="Handle_OnScanResult" 
+                                        IsScanning="True" />
+
+                <!--<zxing:ZXingScannerView Grid.Row="0"
+                                        IsScanning="{Binding IsScanning, Mode=TwoWay}"
+                                        IsAnalyzing="{Binding IsAnalyzing, Mode=TwoWay}"
+                                        Result="{Binding Result, Mode=TwoWay}"
+                                        x:Name="_scanView" 
+                                        ScanResultCommand="{Binding ScanCommand}"/>-->
+                <!--IGNORE FOR MVVM-->
+
+                <BoxView  BackgroundColor="#f5f5f5" Grid.Row="1"/>
+
+
+                <Button Text="Manual Entry" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" 
+                        BackgroundColor="#004760" 
+                        TextColor="White" 
+                        WidthRequest="360" 
+                        HeightRequest="60" 
+                        FontSize="20"
+                        CornerRadius="0"
+                        Command="{Binding ScanCommand}"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

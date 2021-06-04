@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Attenderizer.Views.ScanPages.FailPage">
+    <ContentPage.Content>
+        <Grid RowSpacing="0" BackgroundColor="#FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="250"/>
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="0" HasShadow="False" BorderColor="#FFFFFF" Padding="80">
+                <Image Source="crossicon.png"/>
+            </Frame>
+
+            <StackLayout Grid.Row="1" Padding="30">
+                <Label Text="Uh Oh!" FontSize="30" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                <Label Text="Something went wrong! Please check if it's the right QR code!" FontSize="17" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+
+                <Button Text="Close" FontSize="17" Clicked="Handle_ExitPopUp" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="110" HeightRequest="60"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
