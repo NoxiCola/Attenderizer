@@ -24,7 +24,7 @@
                       HasUnevenRows="True"
                       SeparatorVisibility="None">
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="model:LoginModel">
+                    <DataTemplate>
                         <ViewCell>
 
                             <Grid Padding="5">
@@ -34,10 +34,14 @@
                                             <Label Text="Name:" ></Label>
                                             <Label Text="{Binding FirstName}" ></Label>
                                             <Label Text="{Binding LastName}" ></Label>
+                                            <Image Source="{Binding Image}"></Image>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <Label Text="ID:"></Label>
                                             <Label Text="{Binding Username}" ></Label>
+                                            <Button Command="{Binding }">
+                                                
+                                            </Button>
                                         </StackLayout>
                                     </StackLayout>
                                     

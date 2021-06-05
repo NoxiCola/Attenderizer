@@ -6,6 +6,7 @@ namespace Attenderizer.Services
 {
     public interface IRoleService
     {
-        Task<List<LoginModel>> GetRoleAsync();
+        Task<List<RoleModel>> GetRoleAsync();
+        //Task<List<LoginModel>> GetRoleAsync();
     }
 }

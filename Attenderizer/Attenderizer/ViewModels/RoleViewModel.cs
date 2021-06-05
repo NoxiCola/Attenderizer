@@ -14,14 +14,22 @@ namespace Attenderizer.ViewModels
     public class RoleViewModel : BaseViewModel
     {
         public ObservableCollection<LoginModel> Role { get; set; }
-        IRoleService _roleService = new RoleService();
+        public ObservableCollection<RoleModel> Role2 { get; set; }
+        RoleService _roleService = new RoleService();
 
+        string image = "test.png";
+
+        public string Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
 
         public RoleViewModel()
         {
             //_roleService = new RoleService();
             Role = new ObservableRangeCollection<LoginModel>();
-
+            Role2 = new ObservableRangeCollection<LoginModel>();
             GetRoleCommand = new AsyncCommand(GetRoleList);
             RefreshCommand = new AsyncCommand(Refresh);
 
@@ -36,7 +44,7 @@ namespace Attenderizer.ViewModels
 
             foreach (var user in userList)
             {
-                Role.Add(user);
+                Role2.Add(user);
             }    
         } 
 

@@ -24,6 +24,7 @@ namespace Attenderizer.ViewModels
         private LoginModel userModelFromDB = new LoginModel();
 
 
+
         private string username;
         public string Username 
         {
