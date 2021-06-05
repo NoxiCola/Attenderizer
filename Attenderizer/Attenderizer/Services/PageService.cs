@@ -13,9 +13,9 @@ namespace Attenderizer.Services
             await Application.Current.MainPage.DisplayAlert(title, message, "Ok");
         }
 
-        public async Task DisplayPromptAsync(string title, string message)
+        public async Task<string> DisplayQRPromptAsync(string title, string message)
         {
-            await Application.Current.MainPage.DisplayPromptAsync(title, message, "OK", "Cancel");
+            return await Application.Current.MainPage.DisplayPromptAsync(title, message, "OK", "Cancel");
         }
 
         public async Task<Page> PopAsync()

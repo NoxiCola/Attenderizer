@@ -15,6 +15,8 @@ namespace Attenderizer.Services
         HttpClient client;
         HttpResponseMessage response;
         ScannerModel qrCode;
+        IPageService _pageService = new PageService();
+        LoginModel _loginModel = new LoginModel();
 
         public ScannerService()
         {
@@ -53,5 +55,7 @@ namespace Attenderizer.Services
             else
                 return false;
         }
+
+
     }
 }

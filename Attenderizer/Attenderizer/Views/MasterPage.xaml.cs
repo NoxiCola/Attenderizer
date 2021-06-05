@@ -1,4 +1,5 @@
 ﻿using Attenderizer.Models;
+using Attenderizer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,27 +14,29 @@ namespace Attenderizer.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterPage : TabbedPage
     {
+        public static LoginModel login = new LoginModel();//Saves the user
+
         private string scan = "Scan";
         private string role = "Role";
-        private LoginModel login = new LoginModel(); 
-        public MasterPage(LoginModel model)
+        
+        private ScannerViewModel _scannerViewModel = new ScannerViewModel();
+        public MasterPage()
         {
 
             this.CurrentPageChanged += TabbedPage_CurrentPageChanged;
 
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, true);
-            login = model;
-            //login = model;
-
+            //BindingContext = new ScannerViewModel(loginModel);
+            //_scannerViewModel.GetModel(loginModel);
         }
 
         private void TabbedPage_CurrentPageChanged(object sender, EventArgs e)//adds title name on navbar
         {
             if (CurrentPage == Children[0])
             {
-                string name = login.FirstName;
-                this.Title = name;
+
+                this.Title = scan;
                 
             }
             else

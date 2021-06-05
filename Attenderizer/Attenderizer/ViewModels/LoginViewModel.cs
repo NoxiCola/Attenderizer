@@ -42,12 +42,11 @@ namespace Attenderizer.ViewModels
         {
             _loginService = new LoginService();
             _pageService = new PageService();
+
             LoginCommand = new Command(async () => await Login());//Connects to Login Xaml Page as a Binding as a Command
-
-
         }
 
-        public async Task Login()
+        private async Task Login()
         {
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
@@ -72,7 +71,8 @@ namespace Attenderizer.ViewModels
                     else
                     {
                         userModelFromDB = userDB;
-                        await _pageService.PushModalAsync(new NavigationPage(new MasterPage(userModelFromDB)));
+                        MasterPage.login = userModelFromDB;
+                        await _pageService.PushModalAsync(new NavigationPage(new MasterPage()));
                     }
                 }
                 else
