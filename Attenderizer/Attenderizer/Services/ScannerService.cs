@@ -14,7 +14,7 @@ namespace Attenderizer.Services
         private string BaseUrl = "https://attenderizerapi.azurewebsites.net/";
         HttpClient client;
         HttpResponseMessage response;
-        ScannerModel qrCode;
+        ScannerModel _qrCode;
         IPageService _pageService = new PageService();
         LoginModel _loginModel = new LoginModel();
 
@@ -28,17 +28,17 @@ namespace Attenderizer.Services
 
         public async Task<ScannerModel> GetCodeAsync()
         {
-            qrCode = null;
+            _qrCode = null;
             response = await client.GetAsync($"api/qrcode");
             if (response.IsSuccessStatusCode)
             {
                 var content = response.Content.ReadAsStringAsync().Result;
-                qrCode = JsonConvert.DeserializeObject<ScannerModel>(content);
+                _qrCode = JsonConvert.DeserializeObject<ScannerModel>(content);
 
-                return qrCode;
+                return _qrCode;
             }
 
-            return qrCode;
+            return _qrCode;
         }
 
         public async Task<bool> UpdateAttendanceAsync(int userName, LoginModel model)

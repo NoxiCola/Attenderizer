@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Attenderizer.Models
 {
-    public class LoginModel
+    public class LoginModel : ILoginModel
     {
         [JsonProperty("id")]
         public string Id { get; set; }

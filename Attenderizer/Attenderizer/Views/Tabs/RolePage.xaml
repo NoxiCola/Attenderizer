@@ -8,7 +8,9 @@
              x:Name="ContentPage1">
     <ContentPage.Content>
 
-        <ListView x:Name="StudentAttendenceList" ItemsSource="{Binding Source={x:Reference ContentPage1}, Path=BindingContext.MyList}" IsVisible="True">
+        <ListView x:Name="StudentAttendenceList" 
+                  ItemsSource="{Binding Source={x:Reference ContentPage1}, Path=BindingContext.MyList}" 
+                  IsVisible="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

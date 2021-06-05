@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Attenderizer.Services
 {
-    class LoginService : ILoginService
+    class RoleService
     {
         private string BaseUrl = "https://attenderizerapi.azurewebsites.net/";
         HttpClient client;
         HttpResponseMessage response;
-        LoginModel _login = new LoginModel();
+        LoginModel _role = new LoginModel();
 
-        public LoginService()
+        public RoleService()
         {
             client = new HttpClient
             {
@@ -23,19 +23,19 @@ namespace Attenderizer.Services
             };
         }
 
-        public async Task<LoginModel> GetUserAsync(int url)
+        public async Task<LoginModel> GetRoleAsync()
         {
-            _login = null;
-            response = await client.GetAsync($"api/login/{url}");
+            _role = null;
+            response = await client.GetAsync($"api/login");
             if (response.IsSuccessStatusCode)
             {
                 var content = response.Content.ReadAsStringAsync().Result;
-                _login = JsonConvert.DeserializeObject<LoginModel>(content);
+                _role = JsonConvert.DeserializeObject<LoginModel>(content);
 
-                return _login;
+                return _role;
             }
 
-            return _login;
+            return _role;
         }
     }
 }
