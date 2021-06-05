@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 
 namespace Attenderizer.Services
 {
-    interface ILoginService
+    public interface IRoleService
     {
-        Task<List<LoginModel>> GetListAsync();
-        Task<LoginModel> GetUserAsync(int url);
+        Task<List<LoginModel>> GetRoleAsync();
     }
 }

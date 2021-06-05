@@ -1,4 +1,5 @@
 ﻿using Attenderizer.Views;
+using Attenderizer.Views.Tabs;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace Attenderizer
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new RolePage();
         }
 
         protected override void OnStart()

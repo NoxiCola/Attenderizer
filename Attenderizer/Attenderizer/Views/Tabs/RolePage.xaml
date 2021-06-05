@@ -2,31 +2,62 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:viewmodels="clr-namespace:Attenderizer.ViewModels"
+             xmlns:model="clr-namespace:Attenderizer.Models"
              mc:Ignorable="d"
              x:Class="Attenderizer.Views.Tabs.RolePage"
              x:Name="ContentPage1">
+    <ContentPage.BindingContext>
+        <viewmodels:RoleViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="StudentAttendenceList"
+                      CachingStrategy="RecycleElement"
+                      ItemsSource="{Binding Role}" 
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      RefreshCommand="{Binding RefreshCommand}"
+                      IsVisible="True"
+                      IsPullToRefreshEnabled="True"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LoginModel">
+                        <ViewCell>
 
-        <ListView x:Name="StudentAttendenceList" 
-                  ItemsSource="{Binding Source={x:Reference ContentPage1}, Path=BindingContext.MyList}" 
-                  IsVisible="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
+                            <Grid Padding="5">
+                                <Frame>
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Name:" ></Label>
+                                            <Label Text="{Binding FirstName}" ></Label>
+                                            <Label Text="{Binding LastName}" ></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="ID:"></Label>
+                                            <Label Text="{Binding Username}" ></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    
 
-                        <Grid Padding="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Name}" Grid.Column="0"></Label>
-                            <Image Source="checkicon.png" Grid.Column="1" HorizontalOptions="End"></Image>
-                        </Grid>
+                                    
+                                </Frame>
 
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+        
+
+        
     </ContentPage.Content>
+    
 </ContentPage>

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Attenderizer.Services
 {
-    class RoleService
+    public class RoleService : IRoleService
     {
         private string BaseUrl = "https://attenderizerapi.azurewebsites.net/";
         HttpClient client;
         HttpResponseMessage response;
-        LoginModel _role = new LoginModel();
-
+        //List<RoleModel> _roleList;
+        List<LoginModel> _roleList;
         public RoleService()
         {
             client = new HttpClient
@@ -23,19 +23,22 @@ namespace Attenderizer.Services
             };
         }
 
-        public async Task<LoginModel> GetRoleAsync()
+        public async Task<List<LoginModel>> GetRoleAsync()
         {
-            _role = null;
+            _roleList = null;
+            //_loginList = null;
+
             response = await client.GetAsync($"api/login");
             if (response.IsSuccessStatusCode)
             {
                 var content = response.Content.ReadAsStringAsync().Result;
-                _role = JsonConvert.DeserializeObject<LoginModel>(content);
+                _roleList = JsonConvert.DeserializeObject<List<LoginModel>>(content);
 
-                return _role;
+
+                return _roleList;
             }
 
-            return _role;
+            return _roleList;
         }
     }
 }

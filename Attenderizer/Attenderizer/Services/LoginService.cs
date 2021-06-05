@@ -13,7 +13,8 @@ namespace Attenderizer.Services
         private string BaseUrl = "https://attenderizerapi.azurewebsites.net/";
         HttpClient client;
         HttpResponseMessage response;
-        LoginModel _login = new LoginModel();
+        LoginModel _login;
+        List<LoginModel> _loginList;
 
         public LoginService()
         {
@@ -36,6 +37,21 @@ namespace Attenderizer.Services
             }
 
             return _login;
+        }
+
+        public async Task<List<LoginModel>> GetListAsync()
+        {
+            _loginList = null;
+            response = await client.GetAsync($"api/login");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = response.Content.ReadAsStringAsync().Result;
+                _loginList = JsonConvert.DeserializeObject<List<LoginModel>>(content);
+
+                return _loginList;
+            }
+
+            return _loginList;
         }
     }
 }
