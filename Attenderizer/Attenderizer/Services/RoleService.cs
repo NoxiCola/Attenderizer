@@ -59,26 +59,5 @@ namespace Attenderizer.Services
 
             return _roleList;
         }
-
-        //UPDATE SERVICE
-        //BACKUP JUST INCASE
-
-        //public async Task<List<LoginModel>> GetRoleAsync()
-        //{
-        //    _roleList = null;
-        //    //_loginList = null;
-
-        //    response = await client.GetAsync($"api/login");
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        var content = response.Content.ReadAsStringAsync().Result;
-        //        _roleList = JsonConvert.DeserializeObject<List<LoginModel>>(content);
-
-
-        //        return _roleList;
-        //    }
-
-        //    return _roleList;
-        //}
     }
 }
