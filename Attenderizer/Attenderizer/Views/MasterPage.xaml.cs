@@ -27,8 +27,6 @@ namespace Attenderizer.Views
 
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, true);
-            //BindingContext = new ScannerViewModel(loginModel);
-            //_scannerViewModel.GetModel(loginModel);
         }
 
         private void TabbedPage_CurrentPageChanged(object sender, EventArgs e)//adds title name on navbar

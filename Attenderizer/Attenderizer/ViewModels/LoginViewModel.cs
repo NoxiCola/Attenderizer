@@ -17,7 +17,7 @@ namespace Attenderizer.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ICommand LoginCommand { get;}
+        public ICommand LoginCommand { get; }
 
         private IPageService _pageService;
         private ILoginService _loginService;
@@ -47,15 +47,16 @@ namespace Attenderizer.ViewModels
             LoginCommand = new Command(async () => await Login());//Connects to Login Xaml Page as a Binding as a Command
         }
 
+        //Convert Username string to int -Done-
+        //establish connection with API -Done-
+        //Validate if the user exists -Done-
+        //Get account -Done-
+        //Send account to MasterPage/Child pages
+
         private async Task Login()
         {
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
-                //Convert Username string to int -Done-
-                //establish connection with API -Done-
-                //Validate if the user exists -Done-
-                //Get account -Done-
-                //Send account to MasterPage/Child pages
                 bool success = int.TryParse(username, out int userNum);
                 if (success)
                 {
@@ -73,7 +74,8 @@ namespace Attenderizer.ViewModels
                     {
                         userModelFromDB = userDB;
                         MasterPage.login = userModelFromDB;
-                        await _pageService.PushModalAsync(new NavigationPage(new MasterPage()));
+                        //await _pageService.PushModalAsync(new NavigationPage(new MasterPage()));
+                        App.Current.MainPage = new NavigationPage(new MasterPage());
                     }
                 }
                 else

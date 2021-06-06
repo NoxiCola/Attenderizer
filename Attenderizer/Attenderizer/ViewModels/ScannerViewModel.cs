@@ -77,7 +77,11 @@ namespace Attenderizer.ViewModels
         private async Task OnScan()//Open a new page instead of a display prompt. IsAnalysing is still true
         {
             var qrcode = await _pageService.DisplayQRPromptAsync("Manual Entry", "Please enter the QR Code");
-            await OnQRScan(qrcode);
+            if (qrcode != null)
+            {
+                await OnQRScan(qrcode);
+            }
+            
         }
 
         public async Task OnQRScan(string qrcode)

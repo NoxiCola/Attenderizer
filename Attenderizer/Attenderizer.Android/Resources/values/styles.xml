@@ -36,10 +36,17 @@
     <!-- Set on-screen Navigation Bar color -->
     <item name="android:navigationBarColor">#004760</item>
 
+    <!-- Set color background of Listview -->
+    <item name="android:colorActivatedHighlight">#FFFFFF</item>
+
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+    
+    
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#00bdbf</item>
   </style>
+
+
 </resources>

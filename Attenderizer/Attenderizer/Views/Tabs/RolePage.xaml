@@ -12,56 +12,70 @@
         <viewmodels:RoleViewModel/>
     </ContentPage.BindingContext>
     
-    <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="StudentAttendenceList"
-                      CachingStrategy="RecycleElement"
-                      ItemsSource="{Binding Role}" 
-                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                      RefreshCommand="{Binding RefreshCommand}"
-                      IsVisible="True"
-                      IsPullToRefreshEnabled="True"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
+    <ContentPage.Content >
+        <ListView x:Name="StudentAttendenceList"
+                  ItemsSource="{Binding Role}" 
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  IsVisible="True"
+                  IsPullToRefreshEnabled="True"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  BackgroundColor="#000000">
+                      
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10, 10, 10, 0" RowSpacing="10" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                            <Grid Padding="5">
-                                <Frame>
-                                    <StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="Name:" ></Label>
-                                            <Label Text="{Binding FirstName}" ></Label>
-                                            <Label Text="{Binding LastName}" ></Label>
-                                            <Image Source="{Binding Image}"></Image>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="ID:"></Label>
-                                            <Label Text="{Binding Username}" ></Label>
-                                            <Button Command="{Binding }">
-                                                
-                                            </Button>
-                                        </StackLayout>
-                                    </StackLayout>
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#004760">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
                                     
-
+                                    <Label Text="{Binding FullName }" 
+                                           Grid.Column="0" Grid.Row="0" 
+                                           VerticalOptions="Center"
+                                           TextColor="#FFFFFF"
+                                           FontSize="15"></Label>
                                     
-                                </Frame>
+                                    <Label Text="{Binding StudentID }" 
+                                           Grid.Column="0" Grid.Row="1" 
+                                           VerticalOptions="Center"
+                                           TextColor="#FFFFFF"
+                                           FontSize="15"></Label>
+                                    
+                                    <Image Source="{Binding Image }" 
+                                           Grid.Column="1" 
+                                           Grid.Row="0" 
+                                           Grid.RowSpan="2"
+                                           HorizontalOptions="End" 
+                                           HeightRequest="50"></Image>
+                                </Grid>
+
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
 
 
-                            </Grid>
 
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
 
-        
 
-        
+
     </ContentPage.Content>
     
 </ContentPage>

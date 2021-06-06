@@ -12,7 +12,7 @@ namespace Attenderizer
         {
             InitializeComponent();
 
-            MainPage = new RolePage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

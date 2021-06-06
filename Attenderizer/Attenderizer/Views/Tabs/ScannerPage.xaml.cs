@@ -46,5 +46,10 @@ namespace Attenderizer.Views.Tabs
             _scanView.IsAnalyzing = true;
         }
 
+        protected override void OnDisappearing()
+        {
+            _scanView.IsAnalyzing = false;
+        }
+
     }
 }

@@ -18,6 +18,11 @@ namespace Attenderizer.Services
             return await Application.Current.MainPage.DisplayPromptAsync(title, message, "OK", "Cancel");
         }
 
+        public async Task<bool> DisplayYesNoAlert(string title, string message)
+        {
+            return await Application.Current.MainPage.DisplayAlert(title, message, "Yes", "No");
+        }
+
         public async Task<Page> PopAsync()
         {
             return await Application.Current.MainPage.Navigation.PopAsync();

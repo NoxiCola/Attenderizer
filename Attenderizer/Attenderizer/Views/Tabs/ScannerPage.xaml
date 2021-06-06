@@ -45,7 +45,7 @@
                                         ScanResultCommand="{Binding ScanCommand}"/>-->
                 <!--IGNORE FOR MVVM-->
 
-                <BoxView  BackgroundColor="#f5f5f5" Grid.Row="1"/>
+                <BoxView  BackgroundColor="#000000" Grid.Row="1"/>
 
 
                 <Button Text="Manual Entry" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" 
