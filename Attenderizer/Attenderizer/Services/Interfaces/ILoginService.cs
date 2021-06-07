@@ -7,6 +7,6 @@ namespace Attenderizer.Services
     interface ILoginService
     {
         Task<List<LoginModel>> GetListAsync();
-        Task<LoginModel> GetUserAsync(int url);
+        Task<LoginModel> GetUserAsync(int? url);
     }
 }

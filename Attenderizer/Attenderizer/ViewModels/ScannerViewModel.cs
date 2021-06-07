@@ -22,33 +22,7 @@ namespace Attenderizer.ViewModels
 
         public ICommand ScanCommand { get; set; }
 
-        private bool _isAnalyzing = true;
-        public bool IsAnalyzing
-        {
-            get { return _isAnalyzing; }
-            set
-            {
-                _isAnalyzing = value;
-                //if (!Equals(_isAnalyzing, value))
-                //{
-                //    _isAnalyzing = value;
-                //}
-            }
-        }
 
-        private bool _isScanning = true;
-        public bool IsScanning
-        {
-            get { return _isScanning; }
-            set
-            {
-                _isScanning = value;
-                //if (!Equals(_isScanning, value))
-                //{
-                //    _isScanning = value;
-                //}
-            }
-        }
         private string qrcode = string.Empty;
         public string QRCode
         {
@@ -63,8 +37,6 @@ namespace Attenderizer.ViewModels
             set { qrcodeDB = value; }
         }
         public Result Result { get; set; }
-
-        
 
         public ScannerViewModel()
         {
@@ -81,18 +53,40 @@ namespace Attenderizer.ViewModels
             {
                 await OnQRScan(qrcode);
             }
-            
         }
 
         public async Task OnQRScan(string qrcode)
         {
-            string savedQRCode = await GetSavedQRCode();
+            string databaseQRCode = await GetSavedQRCode();
+            _loginModel = PrepareUpdate(qrcode, databaseQRCode);
 
-            if (qrcode == savedQRCode)
+            if (_loginModel == null)
             {
-                await _pageService.PushModalAsync(new SuccessPage());
+                await _pageService.PushModalAsync(new FailPage());
+            }
 
-                _loginModel = new LoginModel
+
+            await _pageService.PushModalAsync(new SuccessPage());
+            await UpdateAttendance(MasterPage.login.Username, _loginModel);
+        }
+
+        private async Task<string> GetSavedQRCode()// talk to API
+        {
+            string code;
+            var codeFromDB = await _scannerService.GetCodeAsync();
+
+            if (codeFromDB.QRCode == null)
+                code = string.Empty;
+            else
+                code = codeFromDB.QRCode;
+            return code;
+        }
+
+        public LoginModel PrepareUpdate(string userCode, string dbCode)
+        {
+            if (userCode == dbCode)
+            {
+                LoginModel model = new LoginModel
                 {
                     Id = MasterPage.login.Id,
                     Username = MasterPage.login.Username,
@@ -102,32 +96,15 @@ namespace Attenderizer.ViewModels
                     IsAbsent = false
                 };
 
-                bool response = await UpdateAttendance(MasterPage.login.Username, _loginModel);
+                return model;
             }
             else
-            {
-                await _pageService.PushModalAsync(new FailPage());
-            }
+                return null;
         }
 
-        private async Task<string> GetSavedQRCode()// talk to API
+        private async Task UpdateAttendance(int user, LoginModel login)// talk to API
         {
-            string code;
-            var codeFromDB = await _scannerService.GetCodeAsync();
-            if (codeFromDB.QRCode == null)
-            {
-                code = string.Empty;
-            }
-            else
-            {
-                code = codeFromDB.QRCode;
-            }
-            return code;
-        }
-
-        private async Task<bool> UpdateAttendance(int user, LoginModel login)// talk to API
-        {
-            return await _scannerService.UpdateAttendanceAsync(user, login);
+            await _scannerService.UpdateAttendanceAsync(user, login);
         }
     }
 }

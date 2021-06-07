@@ -37,14 +37,6 @@
                                         OnScanResult="Handle_OnScanResult" 
                                         IsScanning="True" />
 
-                <!--<zxing:ZXingScannerView Grid.Row="0"
-                                        IsScanning="{Binding IsScanning, Mode=TwoWay}"
-                                        IsAnalyzing="{Binding IsAnalyzing, Mode=TwoWay}"
-                                        Result="{Binding Result, Mode=TwoWay}"
-                                        x:Name="_scanView" 
-                                        ScanResultCommand="{Binding ScanCommand}"/>-->
-                <!--IGNORE FOR MVVM-->
-
                 <BoxView  BackgroundColor="#000000" Grid.Row="1"/>
 
 

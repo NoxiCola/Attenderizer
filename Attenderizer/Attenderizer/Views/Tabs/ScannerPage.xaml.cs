@@ -32,7 +32,7 @@ namespace Attenderizer.Views.Tabs
             _pageService = new PageService();
         }
 
-        private async void Handle_OnScanResult(ZXing.Result result)
+        private void Handle_OnScanResult(ZXing.Result result)
         {
             Device.BeginInvokeOnMainThread(async () =>
             {

@@ -24,7 +24,7 @@ namespace Attenderizer.Services
             };
         }
 
-        public async Task<LoginModel> GetUserAsync(int url)
+        public async Task<LoginModel> GetUserAsync(int? url)
         {
             _login = null;
             response = await client.GetAsync($"api/login/{url}");
