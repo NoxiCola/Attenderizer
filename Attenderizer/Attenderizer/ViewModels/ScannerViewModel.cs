@@ -63,6 +63,7 @@ namespace Attenderizer.ViewModels
             if (_loginModel == null)
             {
                 await _pageService.PushModalAsync(new FailPage());
+                return;
             }
 
 
