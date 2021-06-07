@@ -31,7 +31,9 @@ namespace Attenderizer.Views.Tabs
             _scannerService = new ScannerService();
             _pageService = new PageService();
         }
-
+        //ZXING is reponsible for scanning QR codes.
+        //it is however finiky to handle in MVVM. especially with enabling and disabling it's scanning mode
+        //so just getting the code is and handling when to analyse qr code are here
         private void Handle_OnScanResult(ZXing.Result result)
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -41,12 +43,12 @@ namespace Attenderizer.Views.Tabs
             });
         }
 
-        protected override void OnAppearing()
+        protected override void OnAppearing()//start analysing and qrcodes seen by the camera
         {
             _scanView.IsAnalyzing = true;
         }
 
-        protected override void OnDisappearing()
+        protected override void OnDisappearing()//stop analysing and qrcodes seen by the camera
         {
             _scanView.IsAnalyzing = false;
         }

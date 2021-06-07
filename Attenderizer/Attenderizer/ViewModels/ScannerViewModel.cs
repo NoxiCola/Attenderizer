@@ -38,7 +38,7 @@ namespace Attenderizer.ViewModels
         }
         public Result Result { get; set; }
 
-        public ScannerViewModel()
+        public ScannerViewModel()//Constructor
         {
             _scannerService = new ScannerService();
             _pageService = new PageService();
@@ -82,7 +82,7 @@ namespace Attenderizer.ViewModels
             return code;
         }
 
-        public LoginModel PrepareUpdate(string userCode, string dbCode)
+        public LoginModel PrepareUpdate(string userCode, string dbCode)//prepares amodel of LoginModel to be sent to the API for updating
         {
             if (userCode == dbCode)
             {
