@@ -29,7 +29,6 @@ namespace Attenderizer.Views.Tabs
             BindingContext = new ScannerViewModel();
 
             _scannerService = new ScannerService();
-            _pageService = new PageService();
         }
         //ZXING is reponsible for scanning QR codes.
         //it is however finiky to handle in MVVM. especially with enabling and disabling it's scanning mode

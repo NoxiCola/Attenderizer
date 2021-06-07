@@ -44,11 +44,6 @@ namespace Attenderizer.ViewModels
             LoginCommand = new Command(async () => await Login());//Connects to Login Xaml Page as a Binding as a Command
         }
 
-        //Convert Username string to int -Done-
-        //establish connection with API -Done-
-        //Validate if the user exists -Done-
-        //Get account -Done-
-
         private bool IsEmpty(string uname, string pword)//Empty field validation method
         {
             if (!string.IsNullOrEmpty(uname) && !string.IsNullOrEmpty(pword))

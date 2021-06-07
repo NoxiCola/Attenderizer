@@ -23,13 +23,9 @@ namespace Attenderizer.ViewModels
         {
             var answer = await _pageService.DisplayYesNoAlert("Logout?", "Are you sure you want to Logout?");
             if (answer == true)
-            {
                 Application.Current.MainPage = new LoginPage();
-            }
             else
-            {
                 return;
-            }
         }
     }
 }

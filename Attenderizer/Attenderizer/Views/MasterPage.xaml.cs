@@ -42,10 +42,5 @@ namespace Attenderizer.Views
                 this.Title = role;
             }
         }
-
-        private void Handle_OnClicked(object sender, EventArgs e)
-        {
-            //await Navigation.PushAsync(new SettingsPage());
-        }
     }
 }
