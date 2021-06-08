@@ -93,7 +93,7 @@ namespace Attenderizer.ViewModels
             else
             {
                 userModelFromDB = userDB;
-                MasterPage.login = userModelFromDB;//save the user to the MasterPage or mainpage
+                User.user = userModelFromDB;//save the user to the MasterPage or mainpage
                 App.Current.MainPage = new NavigationPage(new MasterPage());//Set MasterPage as the new main page (no more accidental logouts with the back button)
             }
         }

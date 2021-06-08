@@ -68,7 +68,7 @@ namespace Attenderizer.ViewModels
 
 
             await _pageService.PushModalAsync(new SuccessPage());
-            await UpdateAttendance(MasterPage.login.Username, _loginModel);
+            await UpdateAttendance(User.user.Username, _loginModel);
         }
 
         private async Task<string> GetSavedQRCode()// talk to API
@@ -83,17 +83,17 @@ namespace Attenderizer.ViewModels
             return code;
         }
 
-        public LoginModel PrepareUpdate(string userCode, string dbCode)//prepares amodel of LoginModel to be sent to the API for updating
+        public LoginModel PrepareUpdate(string userCode, string dbCode)//prepares a model of LoginModel to be sent to the API for updating
         {
             if (userCode == dbCode)
             {
                 LoginModel model = new LoginModel
                 {
-                    Id = MasterPage.login.Id,
-                    Username = MasterPage.login.Username,
-                    Password = MasterPage.login.Password,
-                    FirstName = MasterPage.login.FirstName,
-                    LastName = MasterPage.login.LastName,
+                    Id = User.user.Id,
+                    Username = User.user.Username,
+                    Password = User.user.Password,
+                    FirstName = User.user.FirstName,
+                    LastName = User.user.LastName,
                     IsAbsent = false
                 };
 

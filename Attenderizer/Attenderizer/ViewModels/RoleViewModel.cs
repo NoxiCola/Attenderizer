@@ -29,9 +29,11 @@ namespace Attenderizer.ViewModels
 
         private async Task GetRoleList()
         {
-            var userList = await _roleService.GetRoleAsync();
+            var rollList = await _roleService.GetRoleAsync();
 
-            foreach (var user in userList)
+            if (rollList == null) return;
+
+            foreach (var user in rollList)
             {
                 Role.Add(user);
             }    

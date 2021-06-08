@@ -14,8 +14,6 @@ namespace Attenderizer.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterPage : TabbedPage
     {
-        public static LoginModel login = new LoginModel();//Saves the user
-
         private string scan = "Scan";
         private string role = "Role";
         

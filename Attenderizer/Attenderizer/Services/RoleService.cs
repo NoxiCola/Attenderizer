@@ -13,11 +13,13 @@ namespace Attenderizer.Services
         private string BaseUrl = "https://attenderizerapi.azurewebsites.net/";
         HttpClient client;
         HttpResponseMessage response;
-        List<RoleModel> _roleList = new List<RoleModel>();
+        //List<RoleModel> _roleList = new List<RoleModel>();
+        List<RoleModel> _roleList;
         List<LoginModel> _userList;
-        RoleModel newmodel = new RoleModel();
+        //RoleModel newmodel = new RoleModel();
         public RoleService()
         {
+            _roleList = new List<RoleModel>();
             client = new HttpClient
             {
                 BaseAddress = new Uri(BaseUrl)
@@ -29,6 +31,7 @@ namespace Attenderizer.Services
             _userList = null;
             _roleList.Clear();
             var image = string.Empty;
+
             response = await client.GetAsync($"api/login");
             if (response.IsSuccessStatusCode)
             {
@@ -37,14 +40,7 @@ namespace Attenderizer.Services
 
                 foreach (var item in _userList)
                 {
-                    if (item.IsAbsent)
-                    {
-                        image = "absent.png";
-                    }
-                    else
-                    {
-                        image = "present.png";
-                    }
+                    image = item.IsAbsent ? "absent.png" : "present.png";//ternary operator (1 line if statement with )
 
                     _roleList.Add(new RoleModel() 
                     { 
@@ -57,6 +53,7 @@ namespace Attenderizer.Services
                 return _roleList;
             }
 
+            _roleList = null;
             return _roleList;
         }
     }
